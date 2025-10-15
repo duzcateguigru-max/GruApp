@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>GruApp</title>
-    
+    <link rel="icon" href="assets/LOGO GRU - ORIGINAL solo logo.png">
     <!-- Enlace al Manifest para la PWA -->
     <link rel="manifest" href="manifest.json">
 
@@ -26,6 +26,8 @@
 
     <!-- Carga de Lucide Icons para los íconos -->
     <script src="https://unpkg.com/lucide@latest"></script>
+
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/3.0.0/uicons-brands/css/uicons-brands.css'>
 
     <style>
         /* Estilos para asegurar que el layout ocupe toda la pantalla */
@@ -63,10 +65,10 @@
 
     <!-- Pantalla de Login -->
     <div id="login-screen" class="min-h-screen flex-col place-items-center  bg-gray-100 transition-opacity duration-500">
-        <img src="assets/LOGO GRU - ORIGINAL solo logo.png" alt="GruApp" class="w-20 h-20">
+        <img src="assets/LOGO GRU - ORIGINAL.svg" alt="Logo Gru" class="size-14 m-5">
         <div class="max-w-sm w-full bg-white p-8 rounded-2xl shadow-lg">
             <div class="text-center mb-8">
-                <h1 class="text-3xl font-bold text-gray-800">Bienvenido</h1>
+                <h1 class="text-3xl font-bold text-gray-800 mb-2">GruApp</h1>
                 <p class="text-gray-500">Inicia sesión para continuar</p>
             </div>
             <form id="login-form">
@@ -81,13 +83,16 @@
                 <button type="submit" class="w-full bg-blue-950 text-white font-bold py-3 px-4 m-1 rounded-lg hover:bg-blue-700 transition-colors">
                     Iniciar Sesión
                 </button>
-                <button type="submit" class="w-full bg-blue-950 text-white font-bold py-3 px-4 m-1 rounded-lg hover:bg-blue-700 transition-colors">
+                <button type="submit" class="flex justify-around w-full bg-blue-950 text-white font-bold py-3 px-4 m-1 rounded-lg hover:bg-blue-700 transition-colors">
+                    <i class="fi fi-brands-google"></i>
                     Continuar con Google
                 </button>
-                <button type="submit" class="w-full bg-blue-950 text-white font-bold py-3 px-4 m-1 rounded-lg hover:bg-blue-700 transition-colors">
+                <button type="submit" class="flex justify-around w-full bg-blue-950 text-white font-bold py-3 px-4 m-1 rounded-lg hover:bg-blue-700 transition-colors">
+                    <i class="fi fi-brands-facebook"></i>
                     Continuar con Facebook
                 </button>
-                <button type="submit" class="w-full bg-blue-950 text-white font-bold py-3 px-4 m-1 rounded-lg hover:bg-blue-700 transition-colors">
+                <button type="submit" class="flex justify-around w-full bg-blue-950 text-white font-bold py-3 px-4 m-1 rounded-lg hover:bg-blue-700 transition-colors">
+                    <i class="fi fi-brands-apple"></i>
                     Continuar con Apple
                 </button>
                 <div class="text-center mt-6">
