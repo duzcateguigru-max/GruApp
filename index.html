@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>GruApp</title>
+    
+    <!-- Enlace al Manifest para la PWA -->
+    <link rel="manifest" href="manifest.json">
+
+    <!-- Metaetiquetas para apariencia en iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Mi Web App">
+
+    <!-- Icono para dispositivos Apple -->
+    <link rel="apple-touch-icon" href="https://placehold.co/192x192/007bff/ffffff?text=Icon">
+
+    <!-- Carga de Tailwind CSS para estilos rápidos -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Carga de la fuente Inter desde Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Carga de Lucide Icons para los íconos -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        /* Estilos para asegurar que el layout ocupe toda la pantalla */
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            overflow: hidden; /* Evita el scroll en el body */
+            font-family: 'Inter', sans-serif;
+        }
+        /* Contenedor principal que simula la pantalla de una app */
+        .app-container {
+            display: flex;
+            flex-direction: column;
+            height: 100vh; /* Ocupa toda la altura de la ventana */
+            background-color: #f0f2f5;
+        }
+        /* El área de contenido principal será la única con scroll */
+        .main-content {
+            flex-grow: 1;
+            overflow-y: auto; /* Permite el scroll vertical solo en esta área */
+            padding-bottom: 70px; /* Espacio para no ser tapado por la barra de navegación */
+            scroll-behavior: smooth; /* Habilita el desplazamiento suave */
+        }
+        /* Clases personalizadas para la barra de navegación activa */
+        .nav-item-active svg, .nav-item-active span {
+            color: #2563eb; /* Color del ícono y texto activo (azul) */
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+
+    <!-- Pantalla de Login -->
+    <div id="login-screen" class="min-h-screen flex-col place-items-center  bg-gray-100 transition-opacity duration-500">
+        <img src="assets/LOGO GRU - ORIGINAL solo logo.png" alt="GruApp" class="w-20 h-20">
+        <div class="max-w-sm w-full bg-white p-8 rounded-2xl shadow-lg">
+            <div class="text-center mb-8">
+                <h1 class="text-3xl font-bold text-gray-800">Bienvenido</h1>
+                <p class="text-gray-500">Inicia sesión para continuar</p>
+            </div>
+            <form id="login-form">
+                <div class="mb-4">
+                    <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                    <input type="email" id="email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" placeholder="tu@email.com" value="demo@email.com">
+                </div>
+                <div class="mb-6">
+                    <label for="password" class="block text-sm font-medium text-gray-700 mb-1">Contraseña</label>
+                    <input type="password" id="password" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" placeholder="••••••••" value="123456">
+                </div>
+                <button type="submit" class="w-full bg-blue-950 text-white font-bold py-3 px-4 m-1 rounded-lg hover:bg-blue-700 transition-colors">
+                    Iniciar Sesión
+                </button>
+                <button type="submit" class="w-full bg-blue-950 text-white font-bold py-3 px-4 m-1 rounded-lg hover:bg-blue-700 transition-colors">
+                    Continuar con Google
+                </button>
+                <button type="submit" class="w-full bg-blue-950 text-white font-bold py-3 px-4 m-1 rounded-lg hover:bg-blue-700 transition-colors">
+                    Continuar con Facebook
+                </button>
+                <button type="submit" class="w-full bg-blue-950 text-white font-bold py-3 px-4 m-1 rounded-lg hover:bg-blue-700 transition-colors">
+                    Continuar con Apple
+                </button>
+                <div class="text-center mt-6">
+                    <a href="#" class="text-sm text-blue-600 hover:underline">¿Olvidaste tu contraseña?</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Contenedor Principal de la App (Inicialmente oculto) -->
+    <div id="app-container" class="app-container max-w-md mx-auto bg-white shadow-lg hidden">
+        <!-- 1. Cabecera Fija -->
+        <header class="bg-white/80 backdrop-blur-md border-b border-gray-200 p-4 shadow-sm sticky top-0 z-10">
+            <h1 class="text-xl font-bold text-center text-gray-800">GruApp</h1>
+        </header>
+
+        <!-- 2. Área de Contenido con Scroll -->
+        <div id="main-content" class="main-content">
+            <!-- AQUÍ COMIENZA EL CONTENIDO DE TU LANDING PAGE -->
+            <main>
+                <!-- Sección de Héroe (Hero Section) -->
+                <section id="hero" class="py-20 md:py-32 bg-white">
+                    <div class="container mx-auto px-6 text-center">
+                        <h1 class="text-4xl md:text-5xl font-bold text-gray-900 leading-tight mb-4">
+                            La Solución Perfecta para Tu Negocio
+                        </h1>
+                        <p class="text-lg md:text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
+                            Transforma tu manera de trabajar con nuestra innovadora plataforma. Intuitiva, potente y diseñada para el éxito.
+                        </p>
+                        <a href="#features" class="bg-blue-600 text-white font-bold px-8 py-4 rounded-lg text-lg hover:bg-blue-700 transition-transform transform hover:scale-105">
+                            Descubre Más
+                        </a>
+                    </div>
+                </section>
+
+                <!-- Sección de Características (Features Section) -->
+                <section id="features" class="py-20 bg-gray-50">
+                    <div class="container mx-auto px-6">
+                        <div class="text-center mb-12">
+                            <h2 class="text-3xl md:text-4xl font-bold text-gray-900">Características</h2>
+                            <p class="text-gray-600 mt-2">Todo lo que necesitas en un solo lugar.</p>
+                        </div>
+                        <div class="grid md:grid-cols-3 gap-8">
+                            <!-- Característica 1 -->
+                            <div class="bg-white p-8 rounded-xl shadow-md text-center">
+                                <div class="bg-blue-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                                    <i data-lucide="smartphone" class="w-8 h-8 text-blue-600"></i>
+                                </div>
+                                <h3 class="text-xl font-semibold mb-2">Diseño Responsive</h3>
+                                <p class="text-gray-600">Accede desde cualquier dispositivo, en cualquier momento.</p>
+                            </div>
+                            <!-- Característica 2 -->
+                            <div class="bg-white p-8 rounded-xl shadow-md text-center">
+                                <div class="bg-blue-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                                    <i data-lucide="shield-check" class="w-8 h-8 text-blue-600"></i>
+                                </div>
+                                <h3 class="text-xl font-semibold mb-2">Seguridad Garantizada</h3>
+                                <p class="text-gray-600">Tus datos están protegidos con los más altos estándares.</p>
+                            </div>
+                            <!-- Característica 3 -->
+                            <div class="bg-white p-8 rounded-xl shadow-md text-center">
+                                <div class="bg-blue-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                                    <i data-lucide="bar-chart-3" class="w-8 h-8 text-blue-600"></i>
+                                </div>
+                                <h3 class="text-xl font-semibold mb-2">Análisis Detallados</h3>
+                                <p class="text-gray-600">Obtén informes para tomar decisiones informadas.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Sección de Llamada a la Acción (CTA Section) -->
+                <section id="cta" class="py-20 bg-blue-600 text-white">
+                    <div class="container mx-auto px-6 text-center">
+                        <h2 class="text-3xl md:text-4xl font-bold mb-4">¿Listo para Empezar?</h2>
+                        <p class="text-blue-100 text-lg mb-8 max-w-2xl mx-auto">
+                            Crea tu cuenta gratis en menos de un minuto y descubre por qué somos la mejor opción.
+                        </p>
+                        <a href="#" class="bg-white text-blue-600 font-bold px-8 py-4 rounded-lg text-lg hover:bg-gray-100 transition-transform transform hover:scale-105">
+                            Registrarse Ahora
+                        </a>
+                    </div>
+                </section>
+            </main>
+
+            <!-- Pie de página (Footer) -->
+            <footer class="bg-gray-800 text-white py-6">
+                <div class="container mx-auto px-6 text-center">
+                    <p>&copy; 2025 MiWebApp. Todos los derechos reservados.</p>
+                </div>
+            </footer>
+            <!-- AQUÍ TERMINA EL CONTENIDO DE TU LANDING PAGE -->
+        </div>
+
+        <!-- 3. Barra de Navegación Fija en la parte inferior -->
+        <nav class="bg-white border-t border-gray-200 w-full fixed bottom-0 max-w-md mx-auto shadow-t-lg">
+            <div class="flex justify-around p-2">
+                <!-- Ítem de Navegación: Inicio -->
+                <a href="#hero" class="nav-item flex flex-col items-center text-gray-500 hover:text-blue-600 transition-colors nav-item-active" data-target="hero">
+                    <i data-lucide="home"></i>
+                    <span class="text-xs font-medium">Inicio</span>
+                </a>
+                <!-- Ítem de Navegación: Características -->
+                <a href="#features" class="nav-item flex flex-col items-center text-gray-500 hover:text-blue-600 transition-colors" data-target="features">
+                    <i data-lucide="layout-grid"></i>
+                    <span class="text-xs font-medium">Servicios</span>
+                </a>
+                <!-- Ítem de Navegación: Empezar -->
+                <a href="#cta" class="nav-item flex flex-col items-center text-gray-500 hover:text-blue-600 transition-colors" data-target="cta">
+                    <i data-lucide="rocket"></i>
+                    <span class="text-xs font-medium">Empezar</span>
+                </a>
+            </div>
+        </nav>
+    </div>
+    <script src="index.js"></script>
+</body>
+</html>
