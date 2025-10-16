@@ -20,41 +20,29 @@ if (loginForm) {
 }
 
 
-// --- LÓGICA DE LA APP (existente) ---
+// --- LÓGICA DE NAVEGACIÓN ACTIVA (EN TODAS LAS PÁGINAS DE LA APP) ---
+// Se ejecuta después del código del login.
+
+// Primero, nos aseguramos de que lucide-icons se renderice
 lucide.createIcons();
 
-const mainContent = document.getElementById('main-content');
-const navItems = document.querySelectorAll('.nav-item');
-
-// Lógica para el desplazamiento y el estado activo
-navItems.forEach(item => {
-    item.addEventListener('click', (event) => {
-        event.preventDefault(); // Previene el salto brusco del enlace
-        const targetId = item.getAttribute('href');
-        const targetElement = document.querySelector(targetId);
-        
-        if (targetElement) {
-            mainContent.scrollTo({
-                top: targetElement.offsetTop - mainContent.offsetTop,
-                behavior: 'smooth'
-            });
-        }
-    });
-});
-
-mainContent.addEventListener('scroll', () => {
-    let currentSectionId = '';
-    navItems.forEach(item => {
-        const section = document.querySelector(item.getAttribute('href'));
-        if (section.offsetTop - mainContent.offsetTop <= mainContent.scrollTop + 100) {
-           currentSectionId = item.getAttribute('href');
-        }
-    });
+// Función para resaltar el ítem de navegación activo
+function setActiveNavItem() {
+    const currentPage = window.location.pathname.split('/').pop(); // Obtiene el nombre del archivo actual (ej: "home.html")
+    const navItems = document.querySelectorAll('.nav-item');
 
     navItems.forEach(item => {
-        item.classList.remove('nav-item-active');
-        if (item.getAttribute('href') === currentSectionId) {
+        const itemPage = item.getAttribute('href').split('/').pop();
+
+        // Si el href del ítem coincide con la página actual, le añadimos la clase activa
+        if (itemPage === currentPage) {
             item.classList.add('nav-item-active');
+            item.classList.remove('text-gray-600'); // Opcional: quitar el color por defecto
+        } else {
+            item.classList.remove('nav-item-active');
         }
     });
-});
+}
+
+// Llama a la función cuando el contenido de la página se haya cargado
+document.addEventListener('DOMContentLoaded', setActiveNavItem);
