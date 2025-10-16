@@ -1,24 +1,23 @@
 // --- LÓGICA DEL LOGIN ---
 const loginScreen = document.getElementById('login-screen');
 const appContainer = document.getElementById('app-container');
+
+// --- LÓGICA DEL LOGIN (EN login.html) ---
+// Este código solo se ejecutará si encuentra el formulario de login.
 const loginForm = document.getElementById('login-form');
 
-loginForm.addEventListener('submit', (event) => {
-    event.preventDefault(); // Evita que la página se recargue
-    
-    // Simula un login exitoso
-    console.log('Login exitoso');
+if (loginForm) {
+    loginForm.addEventListener('submit', (event) => {
+        event.preventDefault(); // Evita que la página se recargue
 
-    // Oculta la pantalla de login con una transición
-    loginScreen.classList.add('opacity-0');
-    
-    setTimeout(() => {
-        loginScreen.classList.add('hidden');
+        // Aquí iría tu validación real de usuario y contraseña
+
+        console.log('Login exitoso, redirigiendo a la home...');
         
-        // Muestra el contenedor de la app
-        appContainer.classList.remove('hidden');
-    }, 500); // Coincide con la duración de la transición
-});
+        // Redirige al usuario a la página principal de la app
+        window.location.href = 'home.html';
+    });
+}
 
 
 // --- LÓGICA DE LA APP (existente) ---
