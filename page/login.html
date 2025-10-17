@@ -24,11 +24,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-    <!-- Carga de Lucide Icons para los íconos -->
+    <!-- Carga de íconos -->
     <script src="https://unpkg.com/lucide@latest"></script>
-
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/3.0.0/uicons-brands/css/uicons-brands.css'>
-
+    
     <style>
         /* Estilos para asegurar que el layout ocupe toda la pantalla */
         html, body {
@@ -65,7 +64,7 @@
 
     <!-- Pantalla de Login -->
     <div id="login-screen" class="min-h-screen flex-col place-items-center  bg-gray-100 transition-opacity duration-500">
-        <img src="assets/LOGO GRU - ORIGINAL solo logo.png" alt="GruApp" class="w-20 h-20">
+        <img src="/assets/LOGO GRU - ORIGINAL.svg" alt="GruApp" class="w-10" >
         <div class="max-w-sm w-full bg-white p-8 rounded-2xl shadow-lg">
             <div class="text-center mb-8">
                 <h1 class="text-3xl font-bold text-gray-800">Bienvenido</h1>
@@ -83,14 +82,17 @@
                 <button type="submit" class="w-full bg-blue-950 text-white font-bold py-3 px-4 m-1 rounded-lg hover:bg-blue-700 transition-colors">
                     Iniciar Sesión
                 </button>
-                <button type="submit" class="w-full bg-blue-950 text-white font-bold py-3 px-4 m-1 rounded-lg hover:bg-blue-700 transition-colors">
+                <hr class="h-px my-1 bg-gray-200 border-5 dark:bg-gray-700">
+                <button type="submit" id="google-login" class="flex justify-around w-full bg-blue-950 text-white font-bold py-3 px-4 m-1 rounded-lg hover:bg-blue-700 transition-colors">
+                    <i class="fi fi-brands-google"></i>
                     Continuar con Google
                 </button>
-                <button type="submit" class="flex justify-around w-full bg-blue-950 text-white font-bold py-3 px-4 m-1 rounded-lg hover:bg-blue-700 transition-colors">
+                <button type="submit" id="facebook-login" class="flex justify-around w-full bg-blue-950 text-white font-bold py-3 px-4 m-1 rounded-lg hover:bg-blue-700 transition-colors">
                     <i class="fi fi-brands-facebook"></i>
                     Continuar con Facebook
                 </button>
-                <button type="submit" class="w-full bg-blue-950 text-white font-bold py-3 px-4 m-1 rounded-lg hover:bg-blue-700 transition-colors">
+                <button type="submit" id="apple-login" class="flex justify-around w-full bg-blue-950 text-white font-bold py-3 px-4 m-1 rounded-lg hover:bg-blue-700 transition-colors">
+                    <i class="fi fi-brands-apple"></i>
                     Continuar con Apple
                 </button>
                 <div class="text-center mt-6">
@@ -100,5 +102,6 @@
         </div>
     </div>
     <script src="/js/index.js"></script>
+    <script src="/js/login.js"></script>
 </body>
 </html>

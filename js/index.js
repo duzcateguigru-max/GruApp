@@ -1,23 +1,23 @@
-// --- LÓGICA DEL LOGIN ---
-const loginScreen = document.getElementById('login-screen');
-const appContainer = document.getElementById('app-container');
+// // --- LÓGICA DEL LOGIN ---
+// const loginScreen = document.getElementById('login-screen');
+// const appContainer = document.getElementById('app-container');
 
-// --- LÓGICA DEL LOGIN (EN login.html) ---
-// Este código solo se ejecutará si encuentra el formulario de login.
-const loginForm = document.getElementById('login-form');
+// // --- LÓGICA DEL LOGIN (EN login.html) ---
+// // Este código solo se ejecutará si encuentra el formulario de login.
+// const loginForm = document.getElementById('login-form');
 
-if (loginForm) {
-    loginForm.addEventListener('submit', (event) => {
-        event.preventDefault(); // Evita que la página se recargue
+// if (loginForm) {
+//     loginForm.addEventListener('submit', (event) => {
+//         event.preventDefault(); // Evita que la página se recargue
 
-        // Aquí iría tu validación real de usuario y contraseña
+//         // Aquí iría tu validación real de usuario y contraseña
 
-        console.log('Login exitoso, redirigiendo a la home...');
+//         console.log('Login exitoso, redirigiendo a la home...');
         
-        // Redirige al usuario a la página principal de la app
-        window.location.href = 'home.html';
-    });
-}
+//         // Redirige al usuario a la página principal de la app
+//         window.location.href = 'home.html';
+//     });
+// }
 
 
 // --- LÓGICA DE NAVEGACIÓN ACTIVA (EN TODAS LAS PÁGINAS DE LA APP) ---
